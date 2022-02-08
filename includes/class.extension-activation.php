@@ -15,7 +15,7 @@ if ( !defined('ABSPATH') ) {
 }
 
 /**
- * WPeMatico Extension Activation Handler Class
+ * Fakturo Extension Activation Handler Class
  *
  * @since       1.0.0
  */
@@ -47,7 +47,7 @@ class Fakturo_Extension_Activation {
         if( isset( $plugins[$this->plugin_path . '/' . $this->plugin_file]['Name'] ) ) {
             $this->plugin_name = str_replace( 'Fakturo - ', '', $plugins[$this->plugin_path . '/' . $this->plugin_file]['Name'] );
         } else {
-            $this->plugin_name = __( 'This plugin', 'boilerplate');
+            $this->plugin_name = __( 'This plugin', 'fkrt_Stock_Product');
         }
 
         // Is WPeMatico installed?
@@ -84,12 +84,12 @@ class Fakturo_Extension_Activation {
     public function missing_wpematico_notice() {
         if( $this->has_wpematico ) {
             $url  = esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $this->wpematico_base ), 'activate-plugin_' . $this->wpematico_base ) );
-            $link = '<a href="' . $url . '">' . __( 'activate it', 'boilerplate') . '</a>';
+            $link = '<a href="' . $url . '">' . __( 'activate it', 'fkrt_Stock_Product') . '</a>';
         } else {
             $url  = esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=wpematico' ), 'install-plugin_wpematico' ) );
-            $link = '<a href="' . $url . '">' . __( 'install it', 'boilerplate' ) . '</a>';
+            $link = '<a href="' . $url . '">' . __( 'install it', 'fkrt_Stock_Product' ) . '</a>';
         }
         
-        echo '<div class="error"><p>' . $this->plugin_name . sprintf( __( ' requires Fakturo! Please %s to continue!', 'boilerplate' ), $link ) . '</p></div>';
+        echo '<div class="error"><p>' . $this->plugin_name . sprintf( __( ' requires Fakturo! Please %s to continue!', 'fkrt_Stock_Product' ), $link ) . '</p></div>';
     }
 }
