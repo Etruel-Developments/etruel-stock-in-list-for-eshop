@@ -33,8 +33,14 @@ if (!class_exists('fkrt_stock_proccess') ) {
 			foreach ($terms_stock as $stock) {
 				$total_stock = $total_stock + (isset($product_data['stocks'][$stock->term_id]) ? $product_data['stocks'][$stock->term_id] : 0 );
 			}
-				echo $total_stock;
-			}
+			if($total_stock == 0){
+				echo 'Agotado ('.$total_stock.')';
+			
+				
+			}else{
+			echo 'Hay existencia ('.$total_stock.')';
+		}
+		}
 			
     }
 }
