@@ -1,19 +1,16 @@
 <?php
 
+if (!class_exists('fkrt_stock_in_list_proccess') ) {
 
-if (!class_exists('fkrt_stock_proccess') ) {
-
-    class fkrt_stock_proccess {
+    class fkrt_stock_in_list_proccess {
         
 		function __construct() {
-
 			add_filter('manage_fktr_product_posts_columns', array(__CLASS__, 'columns_stock'));
-
 			add_filter('manage_fktr_product_posts_custom_column', array(__CLASS__, 'manage_columns_stock'), 10, 2);
-
 		}
 
 		public static function columns_stock($columns) {
+
 			$column_reference_pos = 6;
 			$column_reference = ['stock' => __('Stock', 'fakturo')];
 			// 6nd column
@@ -35,16 +32,14 @@ if (!class_exists('fkrt_stock_proccess') ) {
 			}
 			if($total_stock == 0){
 				echo 'Agotado ('.$total_stock.')';
-			
-				
 			}else{
-			echo 'Hay existencia ('.$total_stock.')';
-		}
+				echo 'Hay existencia ('.$total_stock.')';
+			}
 		}
 			
     }
 }
-$fkrt_stock_proccess = new fkrt_stock_proccess();
+$fkrt_stock_in_list_proccess = new fkrt_stock_in_list_proccess();
 
 
 ?>

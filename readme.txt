@@ -1,45 +1,35 @@
-=== Fakturo Stock in List ===
+=== Plugin Name ===
 Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: fakturo, addon, invoice, accountant
 Requires at least: 4.9
 Tested up to: 5,9
 Stable tag: 1.0.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add On for Fakturo plugin. Adds a feature to 
+Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
 
 == Description ==
-Boilerplate Add-on allows to use Fakturo with extra features.
- 
-= How it works =
-
-Descrition and instructions to use.
- 
-= Features =
-
- 
-= Requirements =
-As WPeMatico Add-on requires WPeMatico base plugin installed and activated.  
-PHP 5.6 or higher
+Fakturo Addon to make a new column in products lists to show the current inventory.
 
 == Installation ==
-
 You can either install it automatically from the WordPress admin, or do it manually:
 
 1. Unzip plugin archive and put the folder into your plugins folder (/wp-content/plugins/).
-2. Activate the plugin from the WPeMatico Extensions menu.
+2. Activate the plugin from the Fakturo Extensions menu.
 
 == Frequently Asked Questions ==
 
-= Can I use this plug-in without WPeMatico plugin? =
+= Can I use this plug-in without Fakturo plugin? =
 
-No. Plugin requires WPeMatico Free Version installed and activated.
+No. Plugin requires Fakturo installed and activated.
+
 
 == Screenshots ==
-
-1. Settings page.  Fields to fill.
+1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif)
+2. This screen shot description corresponds to screenshot-2.(png|jpg|jpeg|gif)
 
 == Changelog ==
-
 = 1.0 =
-* initial release
+* First public release

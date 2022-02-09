@@ -2,7 +2,7 @@
 /**
  * Activation handler
  *
- * @package     WPeMatico\ActivationHandler
+ * @package     Fakturo Stock in List\ActivationHandler
  * @since       1.0.0
  */
 
@@ -21,7 +21,7 @@ if ( !defined('ABSPATH') ) {
  */
 class Fakturo_Extension_Activation {
 
-    public $plugin_name, $plugin_path, $plugin_file, $has_wpematico, $wpematico_base;
+    public $plugin_name, $plugin_path, $plugin_file, $has_fkrt_stock_in_list, $fkrt_stock_in_list_base;
 
     /**
      * Setup the activation class
@@ -47,14 +47,14 @@ class Fakturo_Extension_Activation {
         if( isset( $plugins[$this->plugin_path . '/' . $this->plugin_file]['Name'] ) ) {
             $this->plugin_name = str_replace( 'Fakturo - ', '', $plugins[$this->plugin_path . '/' . $this->plugin_file]['Name'] );
         } else {
-            $this->plugin_name = __( 'This plugin', 'fkrt_Stock_Product');
+            $this->plugin_name = __( 'This plugin', 'fkrt_stock_in_list');
         }
 
-        // Is WPeMatico installed?
+        // Is Fakturo installed?
         foreach( $plugins as $plugin_path => $plugin ) {
             if( $plugin['Name'] == 'Fakturo' ) {
-                $this->has_wpematico = true;
-                $this->wpematico_base = $plugin_path;
+                $this->has_fkrt_stock_in_list = true;
+                $this->fkrt_stock_in_list_base = $plugin_path;
                 break;
             }
         }
@@ -70,20 +70,20 @@ class Fakturo_Extension_Activation {
      */
     public function run() {
         // Display notice
-        add_action( 'admin_notices', array( $this, 'missing_wpematico_notice' ) );
+        add_action( 'admin_notices', array( $this, 'missing_fkrt_stock_in_list_notice' ) );
     }
 
 
     /**
-     * Display notice if WPeMatico isn't installed
+     * Display notice if Fakturo isn't installed
      *
      * @access      public
      * @since       1.0.0
      * @return      string The notice to display
      */
-    public function missing_wpematico_notice() {
-        if( $this->has_wpematico ) {
-            $url  = esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $this->wpematico_base ), 'activate-plugin_' . $this->wpematico_base ) );
+    public function missing_fkrt_stock_in_list_notice() {
+        if( $this->has_fkrt_stock_in_list ) {
+            $url  = esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $this->fkrt_stock_in_list_base ), 'activate-plugin_' . $this->fkrt_stock_in_list_base ) );
             $link = '<a href="' . $url . '">' . __( 'activate it', 'fkrt_Stock_Product') . '</a>';
         } else {
             $url  = esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=wpematico' ), 'install-plugin_wpematico' ) );
