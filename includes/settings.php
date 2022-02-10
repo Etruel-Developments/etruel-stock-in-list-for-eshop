@@ -12,7 +12,7 @@ if ( !defined('ABSPATH') ) {
 class fkrt_stock_in_list_page_extension {
 
 	public static function hooks() {
-		
+		add_action('admin_menu', array(__CLASS__, 'admin_menu'), 99);
 		add_filter( 'ftkr_tabs_sections', array(__CLASS__, 'settings_tab' ), 1 );
 		add_action( 'admin_post_save_fkrt_stock_in_list', array(__CLASS__, 'save'));
 	}
@@ -29,33 +29,60 @@ class fkrt_stock_in_list_page_extension {
             $tabs['extensions'] = array();
         }
         if (!isset( $tabs['extensions']['fkrt_stock_in_list'])) {
-           	$tabs['extensions']['fkrt_stock_in_list'] = array('text' => __( 'fkrt_stock_in_list', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 'url' => admin_url('admin.php?page=fktr-stock-product-extension-page'), 'screen' => 'admin_page_fktr-stock-product-extension-page');
+           	$tabs['extensions']['fkrt_stock_in_list'] = array('text' => __( 'Fakturo Stock in List', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 'url' => admin_url('admin.php?page=fktr-stock-in-list-extension-page'), 'screen' => 'admin_page_fktr-stock-in-list-extension-page');
         }
         if (!isset( $tabs['extensions']['default'])) {
            	$tabs['extensions']['default'] = array('text' => __( 'Extensions', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 'url' => '', 'screen' => '');
         }
         if (empty($tabs['extensions']['default']['screen']) && empty($tabs['extensions']['default']['url'])) {
-           	$tabs['extensions']['default'] = array('text' => __( 'Extensions', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 'url' => admin_url('admin.php?page=fktr-stock-product-extension-page'), 'screen' => 'admin_page_fktr-stock-product-extension-page');
+           	$tabs['extensions']['default'] = array('text' => __( 'Extensions', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 'url' => admin_url('admin.php?page=fktr-stock-in-list-extension-page'), 'screen' => 'admin_page_fktr-stock-in-list-extension-page');
         }
         return $tabs;
     }	
  
+	public static function admin_menu() {
+		$page = add_submenu_page(
+			null,
+			__( 'Settings', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 
+			__( 'Settings', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 
+			'edit_fakturo_settings', 
+			'fktr-stock-in-list-extension-page',
+			array(__CLASS__,'page'), 2, 
+			'dashicons-tickets', 
+			);	
+	}
 
 	public static function page() {
 		global $current_screen;
-		$values = get_option('fktr_fkrt_stock_in_list_settings', array());
+		$values = ( get_option('fkrt_stock_in_list_settings', array()) !== '' || !empty(get_option('fkrt_stock_in_list_settings', array()))) ? get_option('fkrt_stock_in_list_settings', array()) : '';
+		//print_r($values);
+		if(is_array($values) && !empty($values)){
+			//die(var_export($values));
+		}
 		echo '<div id="tab_container">
 			<br/>
-			<h1>'.__( 'fkrt_stock_in_list Settings', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ).'</h1>
+			<h1>'.__( 'General Settings', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ).'</h1>
+			<p class="description">'.__( 'Set the color to differentiate the existence of each product.', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ).'</p>
 			<form action="'.admin_url( 'admin-post.php' ).'" id="form_fkrt_stock_in_list" method="post">
 				<input type="hidden" name="action" value="save_fkrt_stock_in_list"/>';
 				wp_nonce_field('save_fkrt_stock_in_list');
 				echo '<table class="form-table">
 						<tr valign="top">
-							<th scope="row">'.__( 'Field', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ).'</th>
+							<th scope="row">'.__( 'In Stock Color', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ).'</th>
 							<td>
-								<input type="text" name="fktr_fkrt_stock_in_list[field]" id="fktr_fkrt_stock_in_list_field" value="'.$values['field'].'"/>
-								<p class="description">'.__( 'Description of field', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ).'</p>
+								<input type="color" name="fkrt_stock_in_list[in_stock]" id="fkrt_stock_in_list_field" value="'.$values['in_stock'].'"/>
+							</td>
+						</tr>
+						<tr valign="top">
+							<th scope="row">'.__( 'Out of Stock Color', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ).'</th>
+							<td>
+								<input type="color" name="fkrt_stock_in_list[out_stock]" id="fkrt_stock_in_list_field" value="'.$values['out_stock'].'"/>
+							</td>
+						</tr>
+						<tr valign="top">
+							<th scope="row">'.__( 'Low Stock Color', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ).'</th>
+							<td>
+								<input type="color" name="fkrt_stock_in_list[low_stock]" id="fkrt_stock_in_list_field" value="'.$values['low_stock'].'"/>
 							</td>
 						</tr>
 					</table>';
@@ -67,7 +94,7 @@ class fkrt_stock_in_list_page_extension {
 		if ( ! wp_verify_nonce($_POST['_wpnonce'], 'save_fkrt_stock_in_list' ) ) {
 		    wp_die(__( 'Security check', FKTR_STOCK_IN_LIST_TEXT_DOMAIN )); 
 		}
-		update_option('fktr_fkrt_stock_in_list_settings', $_POST['fktr_fkrt_stock_in_list']);
+		update_option('fkrt_stock_in_list_settings', $_POST['fkrt_stock_in_list']);
 		fktrNotices::add(__( 'Settings updated', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ));
 		wp_redirect($_POST['_wp_http_referer']);
 		exit;

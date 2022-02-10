@@ -8,7 +8,8 @@ class fkrt_stock_in_list_plugin_functions {
 
 	public static function hooks() {
 		add_filter(	'plugin_row_meta',	array(__CLASS__, 'row_meta') ,10,2);
-		//add_filter(	'plugin_action_links_' . plugin_basename( FKTR_STOCK_IN_LIST_ROOT_FILE ), array(__CLASS__, 'action_links'));
+
+		add_filter(	'plugin_action_links_' . plugin_basename(FKTR_STOCK_IN_LIST_ROOT_FILE), array(__CLASS__, 'action_links'));
 	
 	}
 	/**
@@ -40,7 +41,6 @@ class fkrt_stock_in_list_plugin_functions {
 	* @return  array   $data  modified Links
 	*/
 	public static function action_links($data) {
-		
 		if ( !current_user_can('manage_options') ) {
 			return $data;
 		}

@@ -47,7 +47,7 @@ class Fakturo_Extension_Activation {
         if( isset( $plugins[$this->plugin_path . '/' . $this->plugin_file]['Name'] ) ) {
             $this->plugin_name = str_replace( 'Fakturo - ', '', $plugins[$this->plugin_path . '/' . $this->plugin_file]['Name'] );
         } else {
-            $this->plugin_name = __( 'This plugin', 'fkrt_stock_in_list');
+            $this->plugin_name = __( 'Fakturo Stock in List', 'fkrt_stock_in_list');
         }
 
         // Is Fakturo installed?
@@ -86,7 +86,7 @@ class Fakturo_Extension_Activation {
             $url  = esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $this->fkrt_stock_in_list_base ), 'activate-plugin_' . $this->fkrt_stock_in_list_base ) );
             $link = '<a href="' . $url . '">' . __( 'activate it', 'fkrt_Stock_Product') . '</a>';
         } else {
-            $url  = esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=wpematico' ), 'install-plugin_wpematico' ) );
+            $url  = esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=fakturo' ), 'install-plugin_fakturo' ) );
             $link = '<a href="' . $url . '">' . __( 'install it', 'fkrt_Stock_Product' ) . '</a>';
         }
         
