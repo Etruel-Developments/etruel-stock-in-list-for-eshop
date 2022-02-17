@@ -45,7 +45,6 @@ if( !class_exists( 'fkrt_stock_in_list' ) ) {
                 self::$instance->setup_constants();
                 self::$instance->includes();
                 self::$instance->load_textdomain();
-
             }
 
             return self::$instance;
@@ -139,6 +138,28 @@ if( !class_exists( 'fkrt_stock_in_list' ) ) {
             }
         }
 
+        
+        /** 
+         * Register the stylesheets for the admin area.
+         *
+         * @since    1.0.0
+         */
+        public function enqueue_styles() {
+
+            //wp_enqueue_style( 'fktr-stock-in-list-css', plugin_dir_url( __FILE__ ) . 'assets/css/fktr_stock_in_list.css', array(), '1.0.0', 'all' );
+
+        }
+
+        /**
+         * Register the JavaScript for the admin area.
+         *
+         * @since    1.0.0
+         */
+        public function enqueue_scripts() {
+
+            wp_enqueue_script( 'fktr-stock-in-list-js', plugin_dir_url( __FILE__ ) . 'assets/js/fktr_stock_in_list.js', array( 'jquery' ), '1.0.0', false );
+
+        }
 
        
     }
@@ -171,6 +192,8 @@ function fkrt_stock_in_list_load() {
 }
 
 add_action( 'plugins_loaded', 'fkrt_stock_in_list_load');
+
+
 
 /**
  * The activation hook is called outside of the singleton because WordPress doesn't

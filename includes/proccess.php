@@ -73,6 +73,9 @@
 			
 			public static function print_buttons_reports($request){
 				global $pagenow, $post_type;
+
+				wp_register_script( 'fktr-stock-in-list-js', FKTR_STOCK_IN_LIST_URL . 'assets/js/fktr_stock_in_list.js', array( 'jquery' ), '1.0.0', false );
+				wp_enqueue_script ( 'fktr-stock-in-list-js');
 				
 				$request = wp_parse_args($_REQUEST, apply_filters('report_default_requests_values', array()));
 				
@@ -81,9 +84,10 @@
 				<a class="button-secondary right" title="Download CSV" href="<?php echo admin_url('admin-post.php?action=products_download_csv&'.http_build_query($request) ) ?>" >
 					<?php echo __( 'Download CSV', 'fakturo' ) ?>
 				</a>
-				<a class="button-secondary right" title="Download PDF" style="margin-right:10px;" href="<?php echo admin_url('admin-post.php?action=products_print_pdf&'.http_build_query($request)) ?>">
+				<button class="button-secondary right btn_download_pdf" title="Download PDF" style="margin-right:10px;" >
 					<?php echo __( 'Download PDF', 'fakturo' )?> 
-				</a>
+				</button>
+			 
 				<?php
 				}
 			}
@@ -358,7 +362,7 @@
 					$html_objects .= '
 					
 					
-					<table cellpadding="0" cellspacing="0">
+					<table cellpadding="0" cellspacing="0" id="test">
 						<thead>
 							<tr>
 								<th>'.__('Name', 'fakturo').'</th>';
