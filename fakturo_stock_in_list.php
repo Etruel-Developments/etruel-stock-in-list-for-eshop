@@ -1,14 +1,13 @@
 <?php
-
  /*
         * Plugin Name:    Fakturo Stock in List
         * Plugin URI:     http://www.fakturo.org
-        * Description:    Add a column specifying the stock of each product
+        * Description:    Add a column specifying the stock of each product plus other features like print or export Products list.
         * Version:        1.0.0
-        * Author:         etruel
+        * Author:         Etruel Developments LLC
         * Author URI:     https://etruel.com
         * License:        GPL-2.0+
-        * Text Domain:    fktr_stock_in_lists
+        * Text Domain:    etruel-stock-in-list-for-eshop
         * Domain Path:    /languages
     */
 //fakturo_stock_in_list
@@ -116,26 +115,10 @@ if( !class_exists( 'fkrt_stock_in_list' ) ) {
          public static function load_textdomain() {
             // Set filter for language directory
             $lang_dir = FKTR_STOCK_IN_LIST_DIR . '/languages/';
-            $lang_dir = apply_filters( 'fkrt_stock_in_list_languages_directory', $lang_dir );
+            $lang_dir = apply_filters( 'etruel-stock-in-list-for-eshop_languages_directory', $lang_dir );
 
-            // Traditional WordPress plugin locale filter
-            $locale = apply_filters( 'plugin_locale', get_locale(), 'fkrt_stock_in_list' );
-            $mofile = sprintf( '%1$s-%2$s.mo', 'fkrt_stock_in_list', $locale );
-
-            // Setup paths to current locale file
-            $mofile_local   = $lang_dir . $mofile;
-            $mofile_global  = WP_LANG_DIR . '/fkrt_stock_in_list/' . $mofile;
-
-            if( file_exists( $mofile_global ) ) {
-                // Look in global /wp-content/languages/fkrt_stock_in_list/ folder
-                load_textdomain( 'fkrt_stock_in_list', $mofile_global );
-            } elseif( file_exists( $mofile_local ) ) {
-                // Look in local /wp-content/plugins/fkrt_stock_in_list/languages/ folder
-                load_textdomain( 'fkrt_stock_in_list', $mofile_local );
-            } else {
-                // Load the default language files
-                load_plugin_textdomain( 'fkrt_stock_in_list', false, $lang_dir );
-            }
+            // Load the default language files
+            load_plugin_textdomain( 'etruel-stock-in-list-for-eshop', false, $lang_dir );
         }
 
         

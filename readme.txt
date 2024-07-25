@@ -1,17 +1,22 @@
 === Plugin Name ===
 Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
-Tags: fakturo, addon, invoice, accountant
+Tags: fakturo, addon, invoice, accountant, pdf
 Requires at least: 4.9
-Tested up to: 5,9
+Tested up to: 6.6
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Add a column specifying the stock of each product among other features like print or export Products list.
 
 == Description ==
-Fakturo Addon to make a new column in products lists to show the current inventory.
+
+Fakturo Addon that adds a new column in products lists to show the current inventory of each one without the need to enter the product to check its stock.
+
+Also add other features for products, like print list to PDF or export to CSV format.
+
+This Fakturo extension is free.
 
 == Installation ==
 You can either install it automatically from the WordPress admin, or do it manually:
@@ -27,9 +32,10 @@ No. Plugin requires Fakturo installed and activated.
 
 
 == Screenshots ==
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif)
-2. This screen shot description corresponds to screenshot-2.(png|jpg|jpeg|gif)
+1. The products page screen will show the available current stock and new buttons to print or export the list.
+2. The Settings screen allow to change the collors for the current inventory status in the products list. 
 
 == Changelog ==
-= 1.0 =
-* First public release
+
+= 1.0.0 - Jul 25, 2024 =
+* Re bump the plugin as Fakturo extension

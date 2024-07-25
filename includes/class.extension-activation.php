@@ -47,7 +47,7 @@ class Fakturo_Extension_Activation {
         if( isset( $plugins[$this->plugin_path . '/' . $this->plugin_file]['Name'] ) ) {
             $this->plugin_name = str_replace( 'Fakturo - ', '', $plugins[$this->plugin_path . '/' . $this->plugin_file]['Name'] );
         } else {
-            $this->plugin_name = __( 'Fakturo Stock in List', 'fkrt_stock_in_list');
+            $this->plugin_name = __( 'Fakturo Stock in List', 'etruel-stock-in-list-for-eshop');
         }
 
         // Is Fakturo installed?
@@ -90,6 +90,6 @@ class Fakturo_Extension_Activation {
             $link = '<a href="' . $url . '">' . __( 'install it', 'fkrt_Stock_Product' ) . '</a>';
         }
         
-        echo '<div class="error"><p>' . $this->plugin_name . sprintf( __( ' requires Fakturo! Please %s to continue!', 'fkrt_Stock_Product' ), $link ) . '</p></div>';
+        echo '<div class="error"><p>' . $this->plugin_name . sprintf( __( ' requires Fakturo! Please %s to continue!', 'etruel-stock-in-list-for-eshop' ), $link ) . '</p></div>';
     }
 }
