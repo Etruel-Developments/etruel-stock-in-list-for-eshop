@@ -82,7 +82,7 @@ if( !class_exists( 'fkrt_stock_in_list' ) ) {
 			} 
 			// Plugin text domain
 			if (!defined('FKTR_STOCK_IN_LIST_TEXT_DOMAIN')) {
-				define('FKTR_STOCK_IN_LIST_TEXT_DOMAIN', 'fkrt_stock_in_list');
+				define('FKTR_STOCK_IN_LIST_TEXT_DOMAIN', 'etruel-stock-in-list-for-eshop');
 			}
         }
 
@@ -191,8 +191,8 @@ register_activation_hook( plugin_basename( __FILE__ ), 'fkrt_stock_in_list_activ
 
 function fkrt_stock_in_list_activate() {
     if(class_exists('fakturo')) {
-        $link = '<a href="' . admin_url('admin.php?page=fktr-stock-in-list-extension-page') . '">'.__('Fakturo Stock in List Plugin Settings.',  'fkrt_stock_in_list').'</a>';
-        $notice = __('Fakturo Stock in List Activated.  Please check the fields on', 'fkrt_stock_in_list').' '. $link;
+        $link = '<a href="' . admin_url('admin.php?page=fktr-stock-in-list-extension-page') . '">'.__('Fakturo Stock in List Plugin Settings.',  'etruel-stock-in-list-for-eshop').'</a>';
+        $notice = __('Fakturo Stock in List Activated.  Please check the fields on', 'etruel-stock-in-list-for-eshop').' '. $link;
         fktrNotices::add( array('text' => $notice , 'below-h2' => false , 'screen' => 'plugins_page_fakturo') );
     }
 }
@@ -201,7 +201,7 @@ function fkrt_stock_in_list_activate() {
 register_deactivation_hook( plugin_basename( __FILE__ ), 'fkrt_stock_in_list_deactivate' );
 function fkrt_stock_in_list_deactivate() {
     if(class_exists('fakturo')) {
-        $notice = __('Fakturo Stock in List DEACTIVATED.',  'fkrt_stock_in_list');
+        $notice = __('Fakturo Stock in List DEACTIVATED.',  'etruel-stock-in-list-for-eshop');
         fktrNotices::add( array('text' => $notice , 'below-h2' => false, 'screen' => 'plugins_page_fakturo' ) );
     }
 }

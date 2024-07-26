@@ -94,7 +94,10 @@ class fkrt_stock_in_list_page_extension {
 		if ( ! wp_verify_nonce($_POST['_wpnonce'], 'save_fkrt_stock_in_list' ) ) {
 		    wp_die(__( 'Security check', FKTR_STOCK_IN_LIST_TEXT_DOMAIN )); 
 		}
-		update_option('fkrt_stock_in_list_settings', $_POST['fkrt_stock_in_list']);
+		$settings = isset( $_POST['fkrt_stock_in_list'] ) ? (array) $_POST['fkrt_stock_in_list'] : array();
+		$settings = array_map( 'esc_attr', $settings ); // Replace esc_attr with your desire sanitization	
+		
+		update_option('fkrt_stock_in_list_settings', $settings );
 		fktrNotices::add(__( 'Settings updated', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ));
 		wp_redirect($_POST['_wp_http_referer']);
 		exit;
