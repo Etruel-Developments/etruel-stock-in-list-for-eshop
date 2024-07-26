@@ -28,11 +28,10 @@ class fkrt_stock_in_list_page_extension {
         if (!isset( $tabs['extensions'])) {
             $tabs['extensions'] = array();
         }
+        $tabs['extensions']['default'] = array('text' => __( 'Extensions', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 'url' => '');
+		
         if (!isset( $tabs['extensions']['fkrt_stock_in_list'])) {
            	$tabs['extensions']['fkrt_stock_in_list'] = array('text' => __( 'Fakturo Stock in List', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 'url' => admin_url('admin.php?page=fktr-stock-in-list-extension-page'), 'screen' => 'admin_page_fktr-stock-in-list-extension-page');
-        }
-        if (!isset( $tabs['extensions']['default'])) {
-           	$tabs['extensions']['default'] = array('text' => __( 'Extensions', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 'url' => '', 'screen' => '');
         }
         if (empty($tabs['extensions']['default']['screen']) && empty($tabs['extensions']['default']['url'])) {
            	$tabs['extensions']['default'] = array('text' => __( 'Extensions', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 'url' => admin_url('admin.php?page=fktr-stock-in-list-extension-page'), 'screen' => 'admin_page_fktr-stock-in-list-extension-page');
@@ -42,7 +41,7 @@ class fkrt_stock_in_list_page_extension {
  
 	public static function admin_menu() {
 		$page = add_submenu_page(
-			null,
+			'',
 			__( 'Settings', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 
 			__( 'Settings', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 
 			'edit_fakturo_settings', 
@@ -54,11 +53,27 @@ class fkrt_stock_in_list_page_extension {
 
 	public static function page() {
 		global $current_screen;
-		$values = ( get_option('fkrt_stock_in_list_settings', array()) !== '' || !empty(get_option('fkrt_stock_in_list_settings', array()))) ? get_option('fkrt_stock_in_list_settings', array()) : '';
-		//print_r($values);
-		if(is_array($values) && !empty($values)){
-			//die(var_export($values));
+		//$values = ( get_option('fkrt_stock_in_list_settings', array()) !== '' || !empty(get_option('fkrt_stock_in_list_settings', array()))) ? get_option('fkrt_stock_in_list_settings', array()) : '';
+		//delete_option('fkrt_stock_in_list_settings');
+		$values = get_option('fkrt_stock_in_list_settings', array() );
+		//var_dump($values);
+		if(!is_array($values) ) {
+			$values = array();
 		}
+		if(!empty($values)){
+			//die(var_export($values));
+			if(empty($values['in_stock']))
+				$values['in_stock'] = "#008000";
+			if(empty($values['out_stock']))
+				$values['out_stock'] = "#FF0000";
+			if(empty($values['low_stock']))
+				$values['low_stock'] = "#FF8040";
+		}else{
+			$values['in_stock'] = "#008000";
+			$values['out_stock'] = "#FF0000";
+			$values['low_stock'] = "#FF8040";
+		}
+
 		echo '<div id="tab_container">
 			<br/>
 			<h1>'.__( 'General Settings', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ).'</h1>

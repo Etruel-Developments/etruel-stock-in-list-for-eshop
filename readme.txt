@@ -39,5 +39,5 @@ No. Plugin requires Fakturo installed and activated.
 
 == Changelog ==
 
-= 1.0.0 - Jul 25, 2024 =
+= 1.0.0 - Jul 26, 2024 =
 * Re bump the plugin as Fakturo extension
