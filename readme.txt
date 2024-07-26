@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Fakturo Stock in List ===
 Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: fakturo, addon, invoice, accountant, pdf
@@ -13,6 +13,8 @@ Add a column specifying the stock of each product among other features like prin
 == Description ==
 
 Fakturo Addon that adds a new column in products lists to show the current inventory of each one without the need to enter the product to check its stock.
+
+Select colors of each instance in the Settings Page, Extensions tab.
 
 Also add other features for products, like print list to PDF or export to CSV format.
 
