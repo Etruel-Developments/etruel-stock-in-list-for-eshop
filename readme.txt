@@ -45,6 +45,7 @@ No. Plugin requires [Fakturo](https://wordpress.org/plugins/fakturo) installed a
 = 1.0.1 =
 * Compatible with PHP 8.2 and 8.3: the printed products list no longer relies on the deprecated utf8_decode(), and the PDF is generated in UTF-8 so accented and non-Latin characters are kept.
 * Cleaner admin on WordPress 5.3 and later: the Settings page is registered with the right menu arguments.
+* Ready for the updated PDF engine of Fakturo 1.1 (Dompdf 3): the printed products list keeps looking the same.
 
 = 1.0.0 – Jul 26, 2024 =
 * Re bump the plugin as Fakturo extension
