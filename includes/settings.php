@@ -46,9 +46,9 @@ class fkrt_stock_in_list_page_extension {
 			__( 'Settings', FKTR_STOCK_IN_LIST_TEXT_DOMAIN ), 
 			'edit_fakturo_settings', 
 			'fktr-stock-in-list-extension-page',
-			array(__CLASS__,'page'), 2, 
-			'dashicons-tickets', 
-			);	
+			array(__CLASS__,'page'),
+			2
+			);
 	}
 
 	public static function page() {

@@ -255,7 +255,7 @@ if (!class_exists('fkrt_stock_in_list_proccess')) {
 				<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 					<html>
 						<head>
-							<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+							<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 							<title>' . "Products_Summary_" . date_i18n("Ymdhi") . ".pdf" . '</title>
 							<link href="https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 						
@@ -434,7 +434,7 @@ if (!class_exists('fkrt_stock_in_list_proccess')) {
 			$pdf->set_option("isPhpEnabled", true);
 
 			$pdf->set_paper("A4", "portrait");
-			$pdf->load_html(utf8_decode($total_html_print));
+			$pdf->load_html($total_html_print);
 			$pdf->render();
 			$pdf->stream('Products_Summary_' . date_i18n('Ymdhi') . '.pdf', array('Attachment' => 0));
 		}
