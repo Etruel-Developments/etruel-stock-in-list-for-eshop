@@ -3,7 +3,7 @@
         * Plugin Name:    Fakturo Stock in List
         * Plugin URI:     http://www.fakturo.org
         * Description:    Add a column specifying the stock of each product plus other features like print or export Products list.
-        * Version:        1.0.0
+        * Version:        1.0.1
         * Author:         Etruel Developments LLC
         * Author URI:     https://etruel.com
         * License:        GPL-2.0+
@@ -60,7 +60,7 @@ if( !class_exists( 'fkrt_stock_in_list' ) ) {
        public static function setup_constants() {
             // Plugin version
 			if(!defined('FKTR_STOCK_IN_LIST_VER')) {
-				define('FKTR_STOCK_IN_LIST_VER', '1.0.0' );
+				define('FKTR_STOCK_IN_LIST_VER', '1.0.1' );
 			}
 			// Plugin root file
 			if(!defined('FKTR_STOCK_IN_LIST_ROOT_FILE')) {
